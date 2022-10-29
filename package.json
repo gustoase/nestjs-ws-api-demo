@@ -1,5 +1,5 @@
 {
-  "name": "ws-api",
+  "name": "ws-api-demo",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -21,7 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@drozd/nestjs-ws-api": "file:packages/ws-api",
+    "@drozd/nestjs-ws-api": "^1.0.6",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",

@@ -1,13 +1,11 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
-import { WsAction } from '@drozd/nestjs-ws-api/ws.decorator';
 import { ResultDto } from '../dto/result.dto';
 import { CreateUserDto } from '../dto/create-user.dto';
+import { WsAction } from '@drozd/nestjs-ws-api';
 
 const NAMESPACE = 'business';
 
 @Controller(NAMESPACE)
-@ApiTags(NAMESPACE)
 export class BusinessController {
   @Post('/create')
   @WsAction(NAMESPACE, {

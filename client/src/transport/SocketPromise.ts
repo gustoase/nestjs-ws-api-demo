@@ -1,5 +1,5 @@
-import type { Socket } from 'socket.io-client';
-import type { TResponse } from './domain';
+import type { Socket } from "socket.io-client";
+import type { TResponse } from "./domain";
 
 export default class SocketPromise {
   socket: Socket;

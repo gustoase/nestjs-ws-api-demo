@@ -31,7 +31,6 @@ export namespace Api {
    * @name AppControllerGetUser
    * @request GET:/api/{id}
    * @response `200` `UserDto`
-   * @response `201` `UserDto` Get default user data
    */
   export namespace AppControllerGetUser {
     export type RequestParams = {
@@ -44,7 +43,6 @@ export namespace Api {
   }
   /**
    * No description
-   * @tags business
    * @name BusinessControllerCreateUser
    * @request POST:/api/business/create
    * @response `201` `ResultDto`
@@ -317,7 +315,6 @@ export class Api<
      * @name AppControllerGetUser
      * @request GET:/api/{id}
      * @response `200` `UserDto`
-     * @response `201` `UserDto` Get default user data
      */
     appControllerGetUser: (id: number, params: RequestParams = {}) =>
       this.request<UserDto, any>({
@@ -330,7 +327,6 @@ export class Api<
     /**
      * No description
      *
-     * @tags business
      * @name BusinessControllerCreateUser
      * @request POST:/api/business/create
      * @response `201` `ResultDto`

@@ -1,7 +1,7 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserDto } from '../dto/user.dto';
-import { WsAction } from '@drozd/nestjs-ws-api/ws.decorator';
+import { WsAction } from '@drozd/nestjs-ws-api';
 
 const NAMESPACE = 'app';
 
