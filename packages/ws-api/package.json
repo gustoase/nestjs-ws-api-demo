@@ -1,0 +1,28 @@
+{
+  "name": "@drozd/nestjs-ws-api",
+  "version": "1.0.0",
+  "description": "NestJS WS Rest api adapter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:gustoase/nestjs-ws-api.git"
+  },
+  "keywords": [
+    "nestjs",
+    "websocket",
+    "restapi",
+    "rest",
+    "api"
+  ],
+  "author": "Aleksandr Drozdov <bagzon@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/gustoase/nestjs-ws-api/issues"
+  },
+  "homepage": "https://github.com/gustoase/nestjs-ws-api#readme",
+  "dependencies": {
+    "@nestjs/platform-socket.io": "^9.1.6",
+    "rxjs": "^7.2.0",
+    "socket.io": "^4.5.3",
+    "@nestjs/websockets": "^9.1.6"
+  }
+}
