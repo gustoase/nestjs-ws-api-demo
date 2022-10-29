@@ -16,6 +16,7 @@ import { IWsApiConfig, WsModule } from '@drozd/nestjs-ws-api';
       useFactory: (): IWsApiConfig => {
         return {
           validationConfig,
+          publicConfig: { hello: 'world' },
           async validate(_socket: Socket) {
             // console.log(new ExecutionContextHost([socket]));
             return HttpStatus.OK;
