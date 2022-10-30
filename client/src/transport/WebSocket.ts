@@ -1,9 +1,9 @@
-import { io, Socket } from "socket.io-client";
-import { Subject } from "rxjs";
-import SocketPromise from "./SocketPromise";
-import type { TResponse, TServerConfig, IWebSocket } from "./domain";
+import { io, Socket } from 'socket.io-client';
+import { Subject } from 'rxjs';
+import SocketPromise from './SocketPromise';
+import type { TServerConfig, IWebSocket } from './domain';
 
-import { ETransportStatus } from "./domain";
+import { ETransportStatus } from './domain';
 
 class WebSocket implements IWebSocket {
   private socket!: SocketPromise;
@@ -25,7 +25,7 @@ class WebSocket implements IWebSocket {
 
     const url = new URL(this.wsUrl);
     const ws = io(url.origin, {
-      transports: ["websocket", "polling"],
+      transports: ['websocket', 'polling'],
       path: url.pathname,
       auth: {
         token: this.token,
@@ -35,7 +35,7 @@ class WebSocket implements IWebSocket {
     this.listenStatus(ws);
   }
 
-  emit<T>(event: string, payload: any = ""): Promise<TResponse<T>> {
+  emit<T>(event: string, payload: any = ''): Promise<T> {
     if (this.status !== ETransportStatus.CONNECTED) {
       console.log(`[WS] error network status is: ${this.status}`);
     }
@@ -43,7 +43,7 @@ class WebSocket implements IWebSocket {
     const result = this.socket.emit<T>(event, payload);
 
     result.catch((data: any) => {
-      console.error("[WS emit Error]", data);
+      console.error('[WS emit Error]', data);
     });
 
     return result;
@@ -51,27 +51,27 @@ class WebSocket implements IWebSocket {
 
   on(event: string, clb: (payload: any) => void): void {
     if (this.status !== ETransportStatus.CONNECTED) {
-      throw new Error("Transport WS is disconnected");
+      throw new Error('Transport WS is disconnected');
     }
 
     this.socket.on(event, clb);
   }
 
   private listenStatus(ws: Socket): void {
-    ws.on("ready", (config: TServerConfig) => {
+    ws.on('ready', (config: TServerConfig) => {
       this.status = ETransportStatus.CONNECTED;
       this.serverConfig = config;
       this.onChangeStatus();
     });
-    ws.on("disconnect", () => {
+    ws.on('disconnect', () => {
       this.status = ETransportStatus.DISCONNECTED;
       this.onChangeStatus();
     });
-    ws.on("connect_error", () => {
+    ws.on('connect_error', () => {
       this.status = ETransportStatus.ERROR;
       this.onChangeStatus();
     });
-    ws.on("status", (status: number) => {
+    ws.on('status', (status: number) => {
       this.status = status;
       this.onChangeStatus();
     });

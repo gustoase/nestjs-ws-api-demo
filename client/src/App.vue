@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import webSocket from "@/transport/WebSocket";
-import { ref } from "vue";
-import type { Ref } from "vue";
-import type { CreateUserDto, ResultDto, UserDto } from "../api/Api";
-import type { TResponse } from "@/transport/domain";
-import { useApi } from "@/composibles/api";
+import webSocket from '@/transport/WebSocket';
+import { ref } from 'vue';
+import type { Ref } from 'vue';
+import type { CreateUserDto, ResultDto, UserDto } from '../api/Api';
+import type { TResponse } from '@/transport/domain';
+import { useApi } from '@/composibles/api';
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 
-const error = ref("");
+const error = ref('');
 const user: Ref<TResponse<UserDto> | UserDto | null> = ref(null);
 const createUserData: Ref<CreateUserDto> = ref({
   id: 0,
-  firstName: "",
-  email: "",
+  firstName: '',
+  email: '',
 });
 const resultCreate: Ref<TResponse<ResultDto> | null> = ref(null);
 
 async function fetchUser() {
   const t0 = performance.now();
-  user.value = await webSocket.emit("app:getUser", getRandomInt(9999));
+  user.value = await webSocket.emit('app:getUser', getRandomInt(9999));
   const t1 = performance.now();
   console.log(`WS api ${t1 - t0} ms.`);
 }
@@ -38,10 +38,10 @@ async function fetchUserHttp() {
 async function createUser() {
   try {
     resultCreate.value = await webSocket.emit<ResultDto>(
-      "business:createUser",
-      createUserData.value
+      'business:createUser',
+      createUserData.value,
     );
-    error.value = "";
+    error.value = '';
   } catch (e: any) {
     error.value = e;
     resultCreate.value = null;

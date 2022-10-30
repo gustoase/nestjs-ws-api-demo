@@ -1,12 +1,7 @@
-import type { Observable } from "rxjs";
+import type { Observable } from 'rxjs';
 
 export type TServerConfig = {
   date: string;
-};
-
-export type TResponse<T> = {
-  status: "success" | "error";
-  data: T;
 };
 
 export enum ETransportStatus {
@@ -27,6 +22,6 @@ export interface IWebSocket {
   create(wsUrl: string): void;
   connect(): void;
   disconnect(): void;
-  emit<T>(event: string, payload: any): Promise<TResponse<T>>;
+  emit<T>(event: string, payload: any): Promise<T>;
   on(event: string, clb: (payload: any) => void): void;
 }
